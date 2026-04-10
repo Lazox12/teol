@@ -26,6 +26,12 @@
   color: var(--accent);
 }
 
+.logoImg {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
 .links {
   display: flex;
   align-items: center;

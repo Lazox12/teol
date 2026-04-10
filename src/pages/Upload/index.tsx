@@ -40,9 +40,7 @@ const Upload = () => {
   }
 
   const handleNext = () => {
-    if (booking.fileName) {
       navigate('/search')
-    }
   }
 
   return (
@@ -156,8 +154,7 @@ const Upload = () => {
               </div>
 
               <button 
-                className={styles.nextBtn} 
-                disabled={!booking.fileName}
+                className={styles.nextBtn}
                 onClick={handleNext}
               >
                 Find Available Printers <FiArrowRight />

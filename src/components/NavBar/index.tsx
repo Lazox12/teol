@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FiPrinter, FiSearch, FiUser, FiMenu } from 'react-icons/fi'
+import { FiSearch, FiUser, FiMenu } from 'react-icons/fi'
 import styles from './NavBar.module.css'
+import logoImg from '../../assets/logo.png'
 
 const NavBar = () => {
   return (
     <nav className={styles.nav}>
       <div className={`${styles.container} container`}>
         <Link to="/" className={styles.logo}>
-          <FiPrinter /> <span>Print3D</span>
+          <img src={logoImg} alt="Print3D Logo" className={styles.logoImg} />
+          <span>PrintShare</span>
         </Link>
         <div className={styles.links}>
           <Link to="/search">Find Printers</Link>

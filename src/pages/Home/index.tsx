@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FiUpload, FiSearch, FiCheckCircle } from 'react-icons/fi'
 import styles from './Home.module.css'
+import heroImg from '../../assets/hero.png'
 
 const Home = () => {
   return (
@@ -25,6 +26,9 @@ const Home = () => {
                 <FiSearch /> Browse Printers
               </Link>
             </div>
+          </div>
+          <div className={styles.heroImageWrapper}>
+            <img src={heroImg} alt="3D Printing Hero" className={styles.heroImg} />
           </div>
         </div>
         <div className={styles.heroGradient}></div>
