@@ -124,6 +124,26 @@
   color: var(--text-muted);
 }
 
+.notesSummary {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--glass);
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.notesSummary span {
+  display: block;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.notesSummary p {
+  color: var(--fg);
+  line-height: 1.4;
+}
+
 .divider {
   margin: 1.5rem 0;
   border: none;

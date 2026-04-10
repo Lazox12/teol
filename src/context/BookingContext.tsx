@@ -6,6 +6,8 @@ interface BookingState {
   material: string
   color: string
   infill: number
+  notes: string
+  shippingOption: 'pickup' | 'delivery'
   selectedPrinterId: string | null
 }
 
@@ -21,6 +23,8 @@ const initialState: BookingState = {
   material: 'PLA',
   color: 'White',
   infill: 20,
+  notes: '',
+  shippingOption: 'pickup',
   selectedPrinterId: null,
 }
 

@@ -21,7 +21,7 @@ const ProviderDashboard = () => {
             <FiDollarSign className={styles.statIcon} />
             <div className={styles.statInfo}>
               <span className={styles.statLabel}>Total Earnings</span>
-              <span className={styles.statValue}>$1,240.50</span>
+              <span className={styles.statValue}>28 450 Kč</span>
             </div>
           </div>
           <div className={styles.statCard}>
@@ -51,16 +51,16 @@ const ProviderDashboard = () => {
           <h2>Incoming Print Requests</h2>
           <div className={styles.jobList}>
             {[
-              { id: '1', model: 'Drone_Frame_V2.stl', material: 'ABS', price: 45.00, time: '2h ago' },
-              { id: '2', model: 'Miniature_Knight.obj', material: 'Resin', price: 12.50, time: '5h ago' },
-              { id: '3', model: 'Planter_Geometric.stl', material: 'PLA', price: 28.00, time: '1d ago' },
+              { id: '1', model: 'Drone_Frame_V2.stl', material: 'ABS', price: 145, time: '2h ago' },
+              { id: '2', model: 'Miniature_Knight.obj', material: 'Resin', price: 85, time: '5h ago' },
+              { id: '3', model: 'Planter_Geometric.stl', material: 'PLA', price: 110, time: '1d ago' },
             ].map(job => (
               <div key={job.id} className={styles.jobCard}>
                 <div className={styles.jobMain}>
                   <div className={styles.jobModel}>{job.model}</div>
                   <div className={styles.jobMeta}>{job.material} • {job.time}</div>
                 </div>
-                <div className={styles.jobPrice}>${job.price.toFixed(2)}</div>
+                <div className={styles.jobPrice}>{job.price} Kč</div>
                 <div className={styles.jobActions}>
                   <button className={styles.acceptBtn}>Accept</button>
                   <button className={styles.declineBtn}>Decline</button>

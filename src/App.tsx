@@ -4,9 +4,9 @@ import Home from './pages/Home/index'
 import Upload from './pages/Upload/index'
 import Search from './pages/Search/index'
 import Checkout from './pages/Checkout/index'
+import OrderDetails from './pages/OrderDetails/index'
 import ProviderDashboard from './pages/ProviderDashboard/index'
 import NavBar from './components/NavBar/index'
-
 import { BookingProvider } from './context/BookingContext'
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/order-details" element={<OrderDetails />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/provider" element={<ProviderDashboard />} />
             </Routes>

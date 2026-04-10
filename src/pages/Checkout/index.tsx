@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FiCheckCircle, FiArrowLeft, FiCreditCard, FiLock } from 'react-icons/fi'
+import { FiCheckCircle, FiArrowLeft, FiCreditCard, FiLock, FiMapPin, FiTruck } from 'react-icons/fi'
 import { useBooking } from '../../context/BookingContext'
 import { mockPrinters } from '../../data/mockPrinters'
 import styles from './Checkout.module.css'
@@ -12,6 +12,9 @@ const Checkout = () => {
   const [isProcessing, setIsProcessing] = useState(false)
 
   const selectedPrinter = mockPrinters.find(p => p.id === booking.selectedPrinterId)
+  
+  const shippingCost = booking.shippingOption === 'delivery' ? 100 : 0
+  const totalCost = (selectedPrinter?.estimatedCost || 0) + shippingCost + 25
 
   const handlePay = () => {
     setIsProcessing(true)
@@ -43,8 +46,8 @@ const Checkout = () => {
   return (
     <div className="container">
       <div className={styles.checkoutPage}>
-        <button className={styles.backBtn} onClick={() => navigate('/search')}>
-          <FiArrowLeft /> Back to results
+        <button className={styles.backBtn} onClick={() => navigate('/order-details')}>
+          <FiArrowLeft /> Back to order details
         </button>
 
         <div className={styles.grid}>
@@ -97,27 +100,33 @@ const Checkout = () => {
                 <strong>{booking.material} ({booking.color})</strong>
               </div>
               <div className={styles.summaryRow}>
-                <span>Printer</span>
-                <strong>{selectedPrinter?.name}</strong>
+                <span>Option</span>
+                <strong>{booking.shippingOption === 'pickup' ? 'Local Pickup' : 'Delivery'}</strong>
               </div>
-              <div className={styles.summaryRow}>
-                <span>Provider</span>
-                <strong>{selectedPrinter?.provider}</strong>
-              </div>
+              {booking.notes && (
+                <div className={styles.notesSummary}>
+                  <span>Notes:</span>
+                  <p>{booking.notes}</p>
+                </div>
+              )}
               
               <hr className={styles.divider} />
 
               <div className={styles.summaryRow}>
                 <span>Print Cost</span>
-                <span>${selectedPrinter?.estimatedCost.toFixed(2)}</span>
+                <span>{selectedPrinter?.estimatedCost.toFixed(0)} Kč</span>
+              </div>
+              <div className={styles.summaryRow}>
+                <span>{booking.shippingOption === 'pickup' ? 'Pickup' : 'Shipping'}</span>
+                <span>{shippingCost === 0 ? 'FREE' : `${shippingCost} Kč`}</span>
               </div>
               <div className={styles.summaryRow}>
                 <span>Service Fee</span>
-                <span>$2.50</span>
+                <span>25 Kč</span>
               </div>
               <div className={`${styles.summaryRow} ${styles.total}`}>
                 <span>Total</span>
-                <span>${((selectedPrinter?.estimatedCost || 0) + 2.5).toFixed(2)}</span>
+                <span>{totalCost.toFixed(0)} Kč</span>
               </div>
 
               <button 
@@ -125,7 +134,7 @@ const Checkout = () => {
                 onClick={handlePay}
                 disabled={isProcessing}
               >
-                {isProcessing ? 'Processing...' : `Pay $${((selectedPrinter?.estimatedCost || 0) + 2.5).toFixed(2)}`}
+                {isProcessing ? 'Processing...' : `Pay ${totalCost.toFixed(0)} Kč`}
               </button>
             </div>
           </aside>

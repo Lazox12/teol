@@ -22,7 +22,7 @@ const Search = () => {
 
   const handleBook = (printer: Printer) => {
     setBooking(prev => ({ ...prev, selectedPrinterId: printer.id }))
-    navigate('/checkout')
+    navigate('/order-details')
   }
 
   return (
@@ -92,7 +92,7 @@ const Search = () => {
                     <div className={styles.cardFooter}>
                       <div className={styles.price}>
                         <span className={styles.unit}>STARTING AT</span>
-                        <span className={styles.amount}>${printer.estimatedCost.toFixed(2)}</span>
+                        <span className={styles.amount}>{printer.estimatedCost.toFixed(0)} Kč</span>
                       </div>
                       <button className={styles.bookBtn} onClick={() => handleBook(printer)}>
                         Book Print
